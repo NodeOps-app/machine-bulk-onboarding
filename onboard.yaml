@@ -1,5 +1,5 @@
 ---
-- name: Atlas Network bulk machine onboarding
+- name: NodeOps Network bulk machine onboarding
   hosts: all
   gather_facts: false
   become: true
@@ -11,14 +11,14 @@
         state: present
         update_cache: yes
 
-    - name: Stop the Atlas Network Provider service
+    - name: Stop the NodeOps Network Provider service
       ansible.builtin.service:
         name: atlasnetwork-provider
         state: stopped
       when: reset |bool is true
       ignore_errors: true
 
-    - name: Remove the Atlas Network configuration
+    - name: Remove the NodeOps Network configuration
       ansible.builtin.file:
         path: "{{ ansible_env.HOME }}/.atlas-network"
         state: absent
@@ -27,6 +27,4 @@
 
     - name: Setup
       ansible.builtin.shell: |
-        if [ ! -d "{{ ansible_env.HOME }}/.atlas-network" ]; then
-          curl -L https://get.atlasnetwork.dev | sh -s - {{ onboarding_key }}
-        fi
+          curl -L https://get.atlasnetwork.dev | sh -s - {{ onboarding_secret }}

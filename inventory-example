@@ -1,0 +1,6 @@
+[all]
+10.0.0.1 onboarding_secret= ansible_user=
+#IP onboarding_secret= ansible_user=
+
+[all:vars]
+ansible_user=root
