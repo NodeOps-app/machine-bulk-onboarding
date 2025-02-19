@@ -11,19 +11,19 @@
         state: present
         update_cache: yes
 
-    - name: Stop the NodeOps Network Provider service
-      ansible.builtin.service:
-        name: atlasnetwork-provider
-        state: stopped
-      when: reset |bool is true
-      ignore_errors: true
+    # - name: Stop the NodeOps Network Provider service
+    #   ansible.builtin.service:
+    #     name: atlasnetwork-provider
+    #     state: stopped
+    #   when: reset |bool is true
+    #   ignore_errors: true
 
-    - name: Remove the NodeOps Network configuration
-      ansible.builtin.file:
-        path: "{{ ansible_env.HOME }}/.atlas-network"
-        state: absent
-      when: reset |bool is true
-      ignore_errors: true
+    # - name: Remove the NodeOps Network configuration
+    #   ansible.builtin.file:
+    #     path: "{{ ansible_env.HOME }}/.atlas-network"
+    #     state: absent
+    #   when: reset |bool is true
+    #   ignore_errors: true
 
     - name: Setup
       ansible.builtin.shell: |
