@@ -27,4 +27,4 @@
 
     - name: Setup
       ansible.builtin.shell: |
-          curl -L https://get.atlasnetwork.dev | sh -s - {{ onboarding_secret }}
+          curl -L https://serve-pre-mainnet.nodeops.network/setup.sh  | sh -s - {{ onboarding_secret }}
